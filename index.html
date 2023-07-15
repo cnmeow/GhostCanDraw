@@ -161,10 +161,14 @@
             // Save the current position as the line start position
             lineStartX = x;
             lineStartY = y;
-
+            // Get canvas size for position limit
+            let maxX = canvas.getAttribute("width")
+            let maxY = canvas.getAttribute("height")
+            
             // Move the object based on the direction
-            x += dx;
-            y += dy;
+            if (x + dx >= 0 && x + dx <= maxX) x += dx;
+            if (y + dy >= 0 && y + dy <= maxY) y += dy;
+            
             chrId = document.getElementById("test");
             chrId.style.top = y + "px";
             chrId.style.left = x + "px";
