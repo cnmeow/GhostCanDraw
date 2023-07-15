@@ -142,6 +142,9 @@
          const ghost = document.getElementById("ma");
          const ctx = canvas.getContext("2d");
 
+         // Get canvas size for position limit
+         let maxX = canvas.getAttribute("width")
+         let maxY = canvas.getAttribute("height")
          // Set initial position and line start position
          let x = 500;
          let y = 300;
@@ -163,8 +166,14 @@
             lineStartY = y;
 
             // Move the object based on the direction
-            x += dx;
-            y += dy;
+            if (x + dx <= maxX && x + dx >= 0)
+            {
+               x += dx;
+            }
+            if (y + dy <= maxY && y + dy >= 0)
+            {
+               y += dy;
+            }
             chrId = document.getElementById("test");
             chrId.style.top = y + "px";
             chrId.style.left = x + "px";
